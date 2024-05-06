@@ -21,9 +21,39 @@
     #backButton:hover {
       background-color: #45a049;
     }
+    #startButton {
+      position: fixed;
+      bottom: 20%; /* Adjust this value to move the button higher */
+      right: 50%; /* Adjust this value to move the button to the right */
+      transform: translateX(50%); /* Adjust this value to move the button to the right */
+      padding: 15px 30px; /* Increase padding to make the button larger */
+      background-color: #4CAF50; /* Change the background color */
+      color: #FFFFFF; /* Change the text color */
+      border: none;
+      cursor: pointer;
+      border-radius: 12px; /* Add border-radius to make the button rounder */
+      font-size: 20px; /* Increase font size */
+      transition: background-color 0.3s;
+    }
+    #startButton:hover {
+      background-color: #45a049;
+    }
+    #buttonContainer {
+      display: flex;
+      justify-content: space-around; /* Adjust this value to change the alignment of the buttons */
+      align-items: center; /* Vertically aligns the buttons in the middle */
+      position: fixed; /* Makes the container fixed */
+      bottom: 20%; /* Positions the container 20% from the bottom */
+      width: 100%; /* Makes the container take the full width */
+    }
+    #backButton, #startButton {
+      position: relative; /* Makes the position relative to the container */
+      transform: none; /* Removes the transform */
+    }
   </style>
 </head>
 <body>
+
 <a-scene>
   <!-- 360-Degree Image -->
   <a-sky src="assets/lobbyentry.jpg" rotation="0 -180 0"></a-sky>
@@ -44,25 +74,26 @@
   </a-camera>
 
   <!-- Audio source -->
-  <a-sound src="assets/sound/lobbyentry.mp3" autoplay="true" loop="false" volume=".5"></a-sound>
+  <a-sound id="sceneSound"src="assets/sound/lobbyentry.mp3" autoplay="false" loop="false" volume=".5"></a-sound>
 
 </a-scene>
 
-<!-- Back button -->
-<button id="backButton">Navigate Back</button>
+<div id="buttonContainer">
+  <button id="backButton">Navigate Back</button>
+  <button id="startButton">Start Experience</button>
+</div>
 
 <script>
 
-  // Get the a-scene element
-  var scene = document.querySelector('a-scene');
 
-  // Get the a-sound element
-  var sound = document.querySelector('a-sound');
+  var startButton = document.querySelector('#startButton');
+  var sceneSound = document.querySelector('#sceneSound');
 
-  // Add an event listener for the loaded event on the a-scene
-  scene.addEventListener('loaded', function () {
+  startButton.addEventListener('click', function () {
     // Play the sound
-    sound.components.sound.playSound();
+    sceneSound.components.sound.playSound();
+    // Hide the start button
+    startButton.style.display = 'none';
   });
 
   // Get the back button
