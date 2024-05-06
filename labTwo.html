@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Insta360 360-Degree Image Viewer</title>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <style>
+    #backButton {
+      position: fixed;
+      bottom: 20%; /* Adjust this value to move the button higher */
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 15px 30px; /* Increase padding to make the button larger */
+      background-color: #4CAF50; /* Change the background color */
+      color: #FFFFFF; /* Change the text color */
+      border: none;
+      cursor: pointer;
+      border-radius: 12px; /* Add border-radius to make the button rounder */
+      font-size: 20px; /* Increase font size */
+      transition: background-color 0.3s;
+    }
+    #backButton:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+<a-scene>
+  <!-- 360-Degree Image -->
+  <a-sky src="assets/lab2.jpg" rotation="0 90 0"></a-sky>
+
+  <!-- Hotspots for navigation -->
+  <a-entity id="clickableBox" geometry="primitive: sphere; radius: 0.2" position="0 1.25 3" material="color: red" cursor-listener data-target="millShop"></a-entity>
+  <a-text value="Navigate" position=".45 1.7 3" rotation="0 180 0"></a-text>
+
+  <!-- Camera with cursor and animation -->
+  <a-camera position="0 1.6 0">
+    <a-cursor></a-cursor>
+    <a-animation attribute="position" dur="2000" to="0 1.6 -3"></a-animation>
+  </a-camera>
+
+</a-scene>
+
+<!-- Back button -->
+<button id="backButton">Navigate Back</button>
+
+<script>
+
+  // Get the back button
+  var backButton = document.querySelector('#backButton');
+
+  // Add a click event listener to the back button
+  backButton.addEventListener('click', function () {
+    // Navigate to the previous scene
+    window.history.back();
+  });
+
+  // Get the clickable box
+  var clickableBox = document.querySelector('#clickableBox');
+
+  // Add a click event listener to the clickable box
+  clickableBox.addEventListener('click', function () {
+    // Change the window location to scene2.html
+    window.location.href = 'labOne.html';
+  });
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Insta360 360-Degree Image Viewer</title>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <style>
+    #backButton {
+      position: fixed;
+      bottom: 20%; /* Adjust this value to move the button higher */
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 15px 30px; /* Increase padding to make the button larger */
+      background-color: #4CAF50; /* Change the background color */
+      color: #FFFFFF; /* Change the text color */
+      border: none;
+      cursor: pointer;
+      border-radius: 12px; /* Add border-radius to make the button rounder */
+      font-size: 20px; /* Increase font size */
+      transition: background-color 0.3s;
+    }
+    #backButton:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+<a-scene>
+  <!-- 360-Degree Image -->
+  <a-sky src="assets/lobbyentry.jpg" rotation="0 -180 0"></a-sky>
+
+  <!-- Hotspots for navigation -->
+  <a-entity id="clickableBox" geometry="primitive: sphere; radius: 0.2" position="-4 1 -.2" material="color: red" cursor-listener data-target="millShop"></a-entity>
+  <a-text value="Hallway" position="-3 1.5 .25" rotation="0 95 0"></a-text>
+  <a-entity id="hotspot2" geometry="primitive: sphere; radius: 0.2" position="4 1 1.25" material="color: red" cursor-listener></a-entity>
+  <a-text value="Navigate" position="3 1.5 .45" rotation="0 -115 0"></a-text>
+  <a-entity id="lobbyCenter" geometry="primitive: sphere; radius: 0.2" position="1 1 -3" material="color: red" cursor-listener data-target="millShop"></a-entity>
+  <a-text value="Navigate" position=".5 1.5 -3" rotation="0 -6 0" color="white"></a-text>
+
+
+  <!-- Camera with cursor and animation -->
+  <a-camera position="0 1.6 0">
+    <a-cursor></a-cursor>
+    <a-animation attribute="position" dur="2000" to="0 1.6 -3"></a-animation>
+  </a-camera>
+
+  <!-- Audio source -->
+  <a-sound src="assets/sound/lobbyentry.mp3" autoplay="true" loop="false" volume=".5"></a-sound>
+
+</a-scene>
+
+<!-- Back button -->
+<button id="backButton">Navigate Back</button>
+
+<script>
+
+  // Get the a-scene element
+  var scene = document.querySelector('a-scene');
+
+  // Get the a-sound element
+  var sound = document.querySelector('a-sound');
+
+  // Add an event listener for the loaded event on the a-scene
+  scene.addEventListener('loaded', function () {
+    // Play the sound
+    sound.components.sound.playSound();
+  });
+
+  // Get the back button
+  var backButton = document.querySelector('#backButton');
+
+  // Add a click event listener to the back button
+  backButton.addEventListener('click', function () {
+    // Navigate to the previous scene
+    window.history.back();
+  });
+
+  var hotspot2 = document.querySelector('#hotspot2');
+  // Get the clickable box
+  var clickableBox = document.querySelector('#clickableBox');
+
+  var lobbyCenter = document.querySelector('#lobbyCenter');
+
+  // Add a click event listener to the clickable box
+  lobbyCenter.addEventListener('click', function () {
+    // Change the window location to scene2.html
+    window.location.href = 'lobbyCenter.html';
+  });
+
+
+  // Add a click event listener to the clickable box
+  clickableBox.addEventListener('click', function () {
+    // Change the window location to scene2.html
+    window.location.href = 'hallwayToMakeup.html';
+  });
+
+  hotspot2.addEventListener('click', function () {
+    // Change the window location to scene2.html
+    window.location.href = '831right.html';
+  });
+</script>
+
+</body>
+</html>

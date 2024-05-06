@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Insta360 360-Degree Image Viewer</title>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+</head>
+<body>
+<a-scene>
+  <!-- 360-Degree Image -->
+  <a-sky src="assets/hallcage1.jpg" rotation="0 -90 0"></a-sky>
+
+  <!-- Camera with cursor and animation -->
+  <a-camera position="0 1.6 0">
+    <a-cursor></a-cursor>
+    <a-animation attribute="position" dur="2000" to="0 1.6 -3"></a-animation>
+  </a-camera>
+
+
+  <!-- Text above the circle -->
+  <a-text value="Navigate" position="0 .8 -3" align="center"></a-text>
+  <a-circle id="clickableBox" position="0 1.5 -3" radius=".5" color="#FFFFFF"></a-circle>
+</a-scene>
+
+<script>
+  // Get the clickable box
+  var clickableBox = document.querySelector('#clickableBox');
+
+  // Add a click event listener to the clickable box
+  clickableBox.addEventListener('click', function () {
+    // Change the window location to scene2.html
+    window.location.href = 'scene2.html';
+  });
+</script>
+
+</body>
+</html>
