@@ -39,10 +39,10 @@
   <a-sky src="assets/lobbystairs.jpg" rotation="0 -180 0"></a-sky>
 
   <!-- Hotspots for navigation -->
-  <a-entity id="clickableBox" geometry="primitive: sphere; radius: 0.2" position="-4 1 -.2" material="color: red" cursor-listener data-target="millShop"></a-entity>
-  <a-text value="Hallway" position="-3 1.5 .25" rotation="0 95 0"></a-text>
-  <a-entity id="hotspot2" geometry="primitive: sphere; radius: 0.2" position="4 3 2" material="color: red" cursor-listener></a-entity>
-  <a-text value="Soundstage" position="4 1 -.2" rotation="0 95 0"></a-text>
+  <a-entity id="clickableBox" geometry="primitive: sphere; radius: 0.2" position="-3 1.25 1.5" material="color: red" cursor-listener data-target="millShop"></a-entity>
+  <a-text value="Navigate" position="-3 1.65 2" rotation="0 95 0" color="black"></a-text>
+ <!-- <a-entity id="hotspot2" geometry="primitive: sphere; radius: 0.2" position="4 3 2" material="color: red" cursor-listener></a-entity>
+  <a-text value="Soundstage" position="4 1 -.2" rotation="0 95 0"></a-text>-->
   <a-entity id="hotspot3" geometry="primitive: sphere; radius: 0.2" position="4 1.5 0" material="color: red" cursor-listener data-target="millShop"></a-entity>
   <a-text value="Navigate" position="4 2 -.40" rotation="0 -70 0" color="white"></a-text>
 
@@ -69,7 +69,7 @@
     window.history.back();
   });
 
-  var hotspot2 = document.querySelector('#hotspot2');
+ // var hotspot2 = document.querySelector('#hotspot2');
   // Get the clickable box
   var clickableBox = document.querySelector('#clickableBox');
 
@@ -88,13 +88,14 @@
   // Add a click event listener to the clickable box
   clickableBox.addEventListener('click', function () {
     // Change the window location to scene2.html
-    window.location.href = 'hallwayToMakeup.html';
+    window.location.href = 'lobbyCenter.html';
   });
 
+  /*
   hotspot2.addEventListener('click', function () {
     // Change the window location to scene2.html
     window.location.href = 'soundstage.html';
-  });
+  });*/
 </script>
 
 </body>
