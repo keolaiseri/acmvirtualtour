@@ -27,10 +27,41 @@
       border-radius: 12px; /* Add border-radius to make the button rounder */
       font-size: 20px; /* Increase font size */
       transition: background-color 0.3s;
+      margin-left: 20px; /* Adjust this value to increase or decrease the gap */
+
     }
     #backButton:hover {
       background-color: #45a049;
     }
+    #startButton {
+      position: fixed;
+      bottom: 20%; /* Adjust this value to move the button higher */
+      right: 50%; /* Adjust this value to move the button to the right */
+      transform: translateX(50%); /* Adjust this value to move the button to the right */
+      padding: 15px 30px; /* Increase padding to make the button larger */
+      background-color: #4CAF50; /* Change the background color */
+      color: #FFFFFF; /* Change the text color */
+      border: none;
+      cursor: pointer;
+      border-radius: 12px; /* Add border-radius to make the button rounder */
+      font-size: 20px; /* Increase font size */
+      transition: background-color 0.3s;
+    }
+    #startButton:hover {
+      background-color: #45a049;
+    }
+    #buttonContainer {
+      display: flex;
+      justify-content: space-around; /* Adjust this value to change the alignment of the buttons */
+      align-items: center; /* Vertically aligns the buttons in the middle */
+      position: fixed; /* Makes the container fixed */
+      bottom: 20%; /* Positions the container 20% from the bottom */
+      width: 100%; /* Makes the container take the full width */
+    }
+    #backButton, #startButton {
+      position: absolute; /* Makes the position relative to the container */
+      transform: none;
+    }/* Removes the transform */
   </style>
 </head>
 <body>
@@ -39,12 +70,8 @@
   <a-sky src="assets/writers.jpg" rotation="0 -45 0"></a-sky>
 
   <!-- Hotspots for navigation -->
-  <a-entity id="clickableBox" geometry="primitive: sphere; radius: 0.2" position="-2.35 1.5 3" material="color: red" cursor-listener data-target="millShop"></a-entity>
-  <a-text value="Navigate" position="-1.35 1.9 2.55" rotation="0 140 0" color="white"></a-text>
-  <a-entity id="hotspot2" geometry="primitive: sphere; radius: 0.2" position="4 3 2" material="color: red" cursor-listener></a-entity>
-  <a-text value="Navigate" position="4 3.5 1.5" rotation="0 -115 0"></a-text>
-  <a-entity id="hotspot3" geometry="primitive: sphere; radius: 0.2" position="-2.25 1.25 -2.5" material="color: red" cursor-listener data-target="millShop"></a-entity>
-  <a-text value="Enter Writer's Room" position="-3.5 1.75 -2.5" rotation="0 55 0" color="white"></a-text>
+  <a-entity id="hotspot3" geometry="primitive: sphere; radius: 0.2" position="1 1.25 -3" material="color: red" cursor-listener data-target="millShop"></a-entity>
+  <a-text value="Navigate" position=".5 1.75 -3" rotation="0 -15 0" color="white"></a-text>
 
 
   <!-- Camera with cursor and animation -->
@@ -53,12 +80,25 @@
     <a-animation attribute="position" dur="2000" to="0 1.6 -3"></a-animation>
   </a-camera>
 
+  <a-sound id="sceneSound" src="assets/sound/writers.mp3" autoplay="false" loop="false" volume=".5"></a-sound>
+
+
 </a-scene>
 
-<!-- Back button -->
-<button id="backButton">Navigate Back</button>
+<div id="buttonContainer">
+  <button id="backButton">Navigate Back</button>
+  <button id="startButton">Start Experience</button></div>
 
 <script>
+
+  var startButton = document.querySelector('#startButton');
+  var sceneSound = document.querySelector('#sceneSound');
+
+  startButton.addEventListener('click', function () {
+    // Play the sound
+    sceneSound.components.sound.playSound();
+
+  });
 
   // Get the back button
   var backButton = document.querySelector('#backButton');
@@ -69,7 +109,6 @@
     window.history.back();
   });
 
-  var hotspot2 = document.querySelector('#hotspot2');
   // Get the clickable box
   var clickableBox = document.querySelector('#clickableBox');
 
@@ -88,13 +127,10 @@
   // Add a click event listener to the clickable box
   clickableBox.addEventListener('click', function () {
     // Change the window location to scene2.html
-    window.location.href = 'lobbyEntry.html';
+    window.location.href = 'writersEntry.html';
   });
 
-  hotspot2.addEventListener('click', function () {
-    // Change the window location to scene2.html
-    window.location.href = 'soundstage.html';
-  });
+
 </script>
 
 </body>
