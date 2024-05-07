@@ -27,10 +27,41 @@
       border-radius: 12px; /* Add border-radius to make the button rounder */
       font-size: 20px; /* Increase font size */
       transition: background-color 0.3s;
+      margin-left: 20px; /* Adjust this value to increase or decrease the gap */
+
     }
     #backButton:hover {
       background-color: #45a049;
     }
+    #startButton {
+      position: fixed;
+      bottom: 20%; /* Adjust this value to move the button higher */
+      right: 50%; /* Adjust this value to move the button to the right */
+      transform: translateX(50%); /* Adjust this value to move the button to the right */
+      padding: 15px 30px; /* Increase padding to make the button larger */
+      background-color: #4CAF50; /* Change the background color */
+      color: #FFFFFF; /* Change the text color */
+      border: none;
+      cursor: pointer;
+      border-radius: 12px; /* Add border-radius to make the button rounder */
+      font-size: 20px; /* Increase font size */
+      transition: background-color 0.3s;
+    }
+    #startButton:hover {
+      background-color: #45a049;
+    }
+    #buttonContainer {
+      display: flex;
+      justify-content: space-around; /* Adjust this value to change the alignment of the buttons */
+      align-items: center; /* Vertically aligns the buttons in the middle */
+      position: fixed; /* Makes the container fixed */
+      bottom: 20%; /* Positions the container 20% from the bottom */
+      width: 100%; /* Makes the container take the full width */
+    }
+    #backButton, #startButton {
+      position: absolute; /* Makes the position relative to the container */
+      transform: none;
+    }/* Removes the transform */
   </style>
 </head>
 <body>
@@ -49,14 +80,25 @@
   </a-camera>
 
   <!-- Audio source -->
-  <a-sound src="assets/sound/adr.mp3" autoplay="true" loop="false" volume=".5"></a-sound>
+  <a-sound id="sceneSound" src="assets/sound/adr.mp3" autoplay="false" loop="false" volume=".5"></a-sound>
 
 </a-scene>
 
-<!-- Back button -->
-<button id="backButton">Navigate Back</button>
+<div id="buttonContainer">
+  <button id="backButton">Navigate Back</button>
+  <button id="startButton">Start Experience</button>
+</div>
 
 <script>
+
+  var startButton = document.querySelector('#startButton');
+  var sceneSound = document.querySelector('#sceneSound');
+
+  startButton.addEventListener('click', function () {
+    // Play the sound
+    sceneSound.components.sound.playSound();
+
+  });
 
   // Get the back button
   var backButton = document.querySelector('#backButton');
