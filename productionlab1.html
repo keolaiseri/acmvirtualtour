@@ -39,13 +39,10 @@
   <a-sky src="assets/productionlab1.jpg" rotation="0 80 0"></a-sky>
 
   <!-- Hotspots for navigation -->
-  <a-entity id="clickableBox" geometry="primitive: sphere; radius: 0.2" position="-2.5 1.5 2.5" material="color: red" cursor-listener data-target="millShop"></a-entity>
-  <a-text value="Navigate" position="-2 1.9 2.55" rotation="0 140 0" color="white"></a-text>
+  <a-entity id="clickableBox" geometry="primitive: sphere; radius: 0.2" position="-2 1.5 0" material="color: red" cursor-listener data-target="millShop"></a-entity>
+  <a-text value="Navigate" position="-2 1.9 .35" rotation="0 100 0" color="white"></a-text>
   <a-entity id="hotspot2" geometry="primitive: sphere; radius: 0.2" position="1.1 1.5 -2.5" material="color: red" cursor-listener></a-entity>
   <a-text value="Navigate" position=".5 1.9 -2.5" rotation="0 -30 0"></a-text>
-  <a-entity id="hotspot3" geometry="primitive: sphere; radius: 0.2" position="2 1.5 3" material="color: red" cursor-listener data-target="millShop"></a-entity>
-  <a-text value="Enter Production Room" position="3 1.9 2.5" rotation="0 220 0" color="white"></a-text>
-
 
   <!-- Camera with cursor and animation -->
   <a-camera position="0 1.6 0">
@@ -73,22 +70,12 @@
   // Get the clickable box
   var clickableBox = document.querySelector('#clickableBox');
 
-  var lobbyCenter = document.querySelector('#lobbyCenter');
-
-  var hotspot3 = document.querySelector('#hotspot3');
-
-
-  // Add a click event listener to the clickable box
-  hotspot3.addEventListener('click', function () {
-    // Change the window location to scene2.html
-    window.location.href = 'writersRoom.html';
-  });
 
 
   // Add a click event listener to the clickable box
   clickableBox.addEventListener('click', function () {
     // Change the window location to scene2.html
-    window.location.href = 'lobbyEntry.html';
+    window.location.href = 'upstairsHall3.html';
   });
 
   hotspot2.addEventListener('click', function () {
