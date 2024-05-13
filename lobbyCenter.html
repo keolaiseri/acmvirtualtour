@@ -66,8 +66,14 @@
 </head>
 <body>
 <a-scene>
+  <!-- Asset Management System -->
+  <a-assets>
+    <img id="lobbycenter" src="assets/lobbycenter.jpg" />
+    <audio id="lobbycenterSound" src="assets/sound/lobbycenter.mp3"></audio>
+  </a-assets>
+
   <!-- 360-Degree Image -->
-  <a-sky src="assets/lobbycenter.jpg" rotation="0 -180 0"></a-sky>
+  <a-sky src="#lobbycenter" rotation="0 -180 0"></a-sky>
 
   <!-- Hotspots for navigation -->
   <a-entity id="clickableBox" geometry="primitive: sphere; radius: 0.2" position="-4 1 -.2" material="color: red" cursor-listener data-target="millShop"></a-entity>
@@ -85,7 +91,7 @@
   </a-camera>
 
   <!-- Audio source -->
-  <a-sound id="sceneSound"  src="assets/sound/lobbycenter.mp3" autoplay="true" loop="false" volume=".5"></a-sound>
+  <a-sound id="sceneSound" src="#lobbycenterSound" autoplay="true" loop="false" volume=".5"></a-sound>
 
 
 </a-scene>
