@@ -8,6 +8,7 @@ var urlsToCache = [
     '/soundstage.html',
     'main.js',
     'scene2.html',
+    'millshop.html',
     // add more URLs to cache
 ];
 
