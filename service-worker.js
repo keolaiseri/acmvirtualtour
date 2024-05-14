@@ -5,6 +5,7 @@ var urlsToCache = [
     '/lobbyCenter.html',
     '/lobbyEntry.html',
     '/hallwayToMakeup.html',
+    '/soundstage.html',
     'main.js',
     // add more URLs to cache
 ];
