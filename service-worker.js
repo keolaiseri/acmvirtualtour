@@ -7,6 +7,7 @@ var urlsToCache = [
     '/hallwayToMakeup.html',
     '/soundstage.html',
     'main.js',
+    'scene2.html',
     // add more URLs to cache
 ];
 
